@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+
+
+</head>
+<h2>Login</h2>
+<body style="background-color:#60B8B8;">
+
+
+<form action="login" method="post" >
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter your Username "><br>
+    <input type="password" name="password" placeholder="Enter your password "><br>
+    <input type="submit">
+</form>
+<br>
+<a class="btn btn-secondary" href="credentials/newuser" style="background-color:white;color:black;border-radius:8px;padding: 6px 14px;" >Or Register Here</a>
+
+
+</body>
+</html>

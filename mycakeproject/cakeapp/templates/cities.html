@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Book Your Cakes Here</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if user.is_authenticated %}
+      <a>Hello {{user.username}}</a>
+<br>
+    <a class="btn btn-secondary" href="/logout" style="background-color:black;color:white;border-radius:8px;padding: 4px 7px;">Logout</a>
+{% else %}
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <form method="POST" class="p-3 shadow">
+                {% csrf_token %}
+            <div class="form-group">
+        <input type="text" class="form-control" name="Name" placeholder="Enter your Name">
+</div>
+
+<div class="form-group">
+        <input type="text" class="form-control" name="Address" placeholder="Enter your Address">
+</div>
+<div class="form-group">
+        <input type="number" class="form-control" name="Number" placeholder="Enter your phone number">
+</div>
+<div class="form-group">
+        <input type="number" class="form-control" name="Pin" placeholder="Enter your pincode">
+</div>
+<div class="form-group">
+    <label for="cars">Choose a cake:</label>
+  <select id="cars" name="cars">
+    <option value="volvo">Chocolate Cake</option>
+    <option value="saab">White Forest</option>
+    <option value="fiat">Red Velvet</option>
+    <option value="audi">Kiwi</option>
+  </select>
+</div>
+
+
+
+
+<select class="custom-select mb-4"
+        name="city"
+        hx-get="{% url 'cakeapp:towns' %}"
+        hx-trigger="change"
+        hx-target="#towns">
+
+    <option selected>Choose your city</option>
+    {% for city in cities %}
+        <option value="{{city.pk}}">{{ city.name }}</option>
+    {% endfor %}
+</select>
+<br>
+
+<div id="towns">
+    {% include 'partials/towns.html' %}
+</div>
+
+
+
+    <a class="btn btn-secondary" href="/thankyou" style="background-color:black;color:white;border-radius:8px;padding: 4px 7px;">Submit</a>
+            <br>
+            <br>
+
+
+
+
+            </form>
+{% endblock %}

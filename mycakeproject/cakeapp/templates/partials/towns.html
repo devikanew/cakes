@@ -1,0 +1,9 @@
+<div id="towns">
+<select class="custom-select">
+    <option selected>Choose your Town</option>
+
+    {% for town in towns %}
+        <option value="{{town.pk}}">{{ town.name }}</option>
+    {% endfor %}
+</select>
+</div>

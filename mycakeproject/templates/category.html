@@ -1,0 +1,39 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{category.description|truncatewords:155}}
+    {% else %}
+        Welcome to yesh' tarte Cake Space
+    {% endif %}
+{% endblock %}
+{% block title %}
+{% if category %}
+        {{category.name}} - yesh' tarte
+    {% else %}
+        Your Cake Space
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% if category %}
+    <div>
+        <div class="row my_row_class ">
+            <div class="mx-auto">
+                <p>
+                <a href="{% url 'cakeapp:allCake' %}">Our Chef's Choices</a>
+            </p>
+        </div>
+        </div>
+    </div>
+    {% endif %}
+<div class="mx_auto">
+
+<div>
+    <img class="my_image my_image_padding" src="{% static 'img/banner.png' %}" alt="our products" width="1500px" height="700px">
+</div>
+ <div class="text-center">
+     <a href="credentials/register" class="btn btn-light btn-sm" style="border:none;color:white;background-color:;" >Book Your Cakes Here</a>
+ </div>
+<br>
+{% endblock %}
